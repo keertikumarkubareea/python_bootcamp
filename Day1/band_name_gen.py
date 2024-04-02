@@ -3,6 +3,6 @@ def generate_band_name(city: str, pet: str) -> str:
 
 
 print("Welcome to band name generator!")
-city_name = input("What is the name of the city you grew up in?: ")
-pet_name = input("What is the name of your pet?: ")
+city_name = input("What is the name of the city you grew up in?: \n")
+pet_name = input("What is the name of your pet?: \n")
 print(generate_band_name(city_name, pet_name))
