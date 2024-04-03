@@ -1,5 +1,5 @@
 def generate_band_name(city: str, pet: str) -> str:
-    return f"Your band name could be {city} {pet_name}"
+    return f"Your band name could be {city} {pet}"
 
 
 print("Welcome to band name generator!")
