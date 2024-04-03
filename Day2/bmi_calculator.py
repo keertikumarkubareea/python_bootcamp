@@ -5,7 +5,7 @@ Project: BMI calculator
 
 
 def calc_bmi(weight: float, height: float) -> int:
-    bmi = int(weight / (height ** height))
+    bmi = int(weight / (height ** 2))
     return bmi
 
 
