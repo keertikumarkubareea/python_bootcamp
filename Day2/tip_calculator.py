@@ -19,7 +19,8 @@ tip_percentage = int(input("What percentage of tip would you like to give? (Sugg
 tip_in_dollars = calculate_tip(initial_bill, tip_percentage)
 bill_after_tip = initial_bill + tip_in_dollars
 persons = int(input("With how many people are you splitting the bill?: "))
-print(f"Each person should pay: ${round(split_total(bill_after_tip, persons), 2)}")
+final_amount = "{:.2f}".format(round(split_total(bill_after_tip, persons), 2))
+print(f"Each person should pay: ${final_amount}")
 
 
 
