@@ -27,9 +27,12 @@ if can_ride(h):
     else:  # Ages above 18
         print("Adult tickets are $12.")
         price = 12
+    if 45 <= age <= 55:
+        print("You might be having a midlife crisis, FREE ticket for you!")
+        price = 0
     pics = input("Do you want photos? (y or n): ")
     if pics == "y" or pics == "Y":
         price += 3
-    print (f"Your total payment due is ${price}")
+    print(f"Your total payment due is ${price}")
 else:
     print("You need to grow taller before you can ride the rollercoaster")
