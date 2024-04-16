@@ -4,7 +4,34 @@ Capstone project for Day 4: Rock, Paper, Scissors game
 """
 import random
 
-game = ["rock", "paper", "scissors"]
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+     _______
+---'    ____)____
+           ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+game = [rock, paper, scissors]
 player_choice = int(input("1: Rock, 2: Paper, 3: Scissors. Choose a number: "))
 
 while player_choice not in range(4):
@@ -23,21 +50,24 @@ print("------------------------------------")
 
 if ai_choice == player_choice:
     print("DRAW!")
-elif player_choice == "rock":
-    if ai_choice == "paper":
+elif player_choice == rock:
+    if ai_choice == paper:
         print("The computer wins!!")
+        print("You lose.")
     else:
-        print("Player wins!!")
-elif player_choice == "paper":
-    if ai_choice == "scissors":
+        print("You win!!")
+elif player_choice == paper:
+    if ai_choice == scissors:
         print("The computer wins!!")
+        print("You lose.")
     else:
-        print("Player wins!!")
-elif player_choice == "scissors":
-    if ai_choice == "rock":
+        print("You win!!")
+elif player_choice == scissors:
+    if ai_choice == rock:
         print("The computer wins!!")
+        print("You lose.")
     else:
-        print("Player wins!!")
+        print("You win!!")
 
 
 
