@@ -23,8 +23,22 @@ print("------------------------------------")
 
 if ai_choice == player_choice:
     print("DRAW!")
+elif player_choice == "rock":
+    if ai_choice == "paper":
+        print("The computer wins!!")
+    else:
+        print("Player wins!!")
+elif player_choice == "paper":
+    if ai_choice == "scissors":
+        print("The computer wins!!")
+    else:
+        print("Player wins!!")
+elif player_choice == "scissors":
+    if ai_choice == "rock":
+        print("The computer wins!!")
+    else:
+        print("Player wins!!")
 
-# TODO: Add logic for game
 
 
 
