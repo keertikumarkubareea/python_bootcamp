@@ -42,7 +42,7 @@ print(f"You have chosen {player_choice}!!")
 
 print("------------------------------------")
 
-ai_choice = random.randint(0, 2)
+ai_choice = random.randint(0, 2)  # Randomize the computer's choice
 ai_choice = game[ai_choice]
 print(f"The computer has chosen: {ai_choice}!!")
 
