@@ -1,16 +1,33 @@
 """
 Day 8: Final capstone project - building a Caesar Cipher to encrypt and decrypt text
+
+Test case: abcdefghijklmnopqrstuvwxyz
+
 """
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
 
 
 def encode(m: str, s: int) -> str:
     # TODO
-    return ""
+    m = list(m.lower())
+    for char_index in range(len(m)):
+        if m[char_index] in alphabet:
+            index = alphabet.index(m[char_index])
+            shifted_index = (index + s) % len(alphabet)
+            m[char_index] = alphabet[shifted_index]
+    return "".join(m)
 
 
 def decode(cipher: str, s: int) -> str:
     # TODO
-    return ""
+    cipher = list(cipher.lower())
+    for char_index in range(len(cipher)):
+        if cipher[char_index] in alphabet:
+            index = alphabet.index(cipher[char_index])
+            shifted_index = (index - s) % len(alphabet)
+            cipher[char_index] = alphabet[shifted_index]
+    return "".join(cipher)
 
 
 caesar = True
@@ -26,10 +43,10 @@ while caesar:
     message = input("Please enter your message: ")
 
     if operation == "encode":
-        cipher_text = encode(message, shift)
+        cipher_text = encode(m=message, s=shift)
         print(f"Your ciphertext is as follows: {cipher_text}")
     else:
-        true_message = decode(message, shift)
+        true_message = decode(cipher=message, s=shift)
         print(f"Your message is as follows: {true_message}")
 
     redo = input("Do you want to go again? 'yes' or 'no': ").lower()
