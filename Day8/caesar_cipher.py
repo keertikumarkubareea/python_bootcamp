@@ -1,15 +1,11 @@
 """
 Day 8: Final capstone project - building a Caesar Cipher to encrypt and decrypt text
-
-Test case: abcdefghijklmnopqrstuvwxyz
-
 """
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
 
 
 def encode(m: str, s: int) -> str:
-    # TODO
     m = list(m.lower())
     for char_index in range(len(m)):
         if m[char_index] in alphabet:
@@ -20,7 +16,6 @@ def encode(m: str, s: int) -> str:
 
 
 def decode(cipher: str, s: int) -> str:
-    # TODO
     cipher = list(cipher.lower())
     for char_index in range(len(cipher)):
         if cipher[char_index] in alphabet:
@@ -31,7 +26,6 @@ def decode(cipher: str, s: int) -> str:
 
 
 caesar = True
-
 while caesar:
     print("Please enter 'encode' to encrypt and 'decode' to decrypt: ")
     operation = input().lower()
