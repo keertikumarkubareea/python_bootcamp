@@ -46,9 +46,35 @@ def add_card_to_hand(current_hand: dict, card: str) -> dict:
     return current_hand
 
 
+def deal_hands(current_deck: dict, user_hand: dict, dealer_hand: dict) -> tuple:
+    # first, we get a card from the current deck to give to the dealer
+    card_to_deal, current_deck = get_card_from_deck(current_deck=current_deck)  # current deck has been updated
+    # add the card to the dealer's hand
+    dealer_hand = add_card_to_hand(current_hand=dealer_hand, card=card_to_deal)
+    # second, get a card from the updated deck to give to the user
+    card_to_deal, current_deck = get_card_from_deck(current_deck=current_deck)  # current deck updated again
+    # add the card to the user's hand
+    user_hand = add_card_to_hand(current_hand=user_hand, card=card_to_deal)
+    # return the updated deck (2 cards less than the original deck)
+    # return the dealer's hand and the user's hand
+    return current_deck, user_hand, dealer_hand
+
+
+def deal_one_hand(current_deck: dict, current_hand: dict) -> tuple:
+    """
+    This function deals only one hand: either to the user or to the dealer
+    :param current_deck: The dictionary containing the most recent deck of available cards
+    :param current_hand: The dictionary mapping the cards and their respective counts (user or dealer)
+    :return: a tuple (updated deck, updated hand)
+    """
+    card_to_deal, current_deck = get_card_from_deck(current_deck=current_deck)
+    current_hand = add_card_to_hand(current_hand=current_hand, card=card_to_deal)
+    return current_deck, current_hand
+
+
 def main():
     # TODO
-    print("Hello World!")
+    print("Welcome to a game of Blackjack!!")
 
 
 if __name__ == "__main__":
