@@ -113,9 +113,19 @@ def main():
                 # Immediate loss of Player - break out of the loop
                 continue
         if dealer_score < 21:
-            deck, dealer = deal_one_hand(current_deck=deck, current_hand=dealer)
-            dealer_score = calc_hand_total(dealer)
-            print(f"Dealer has acquired a card (hidden)")
+            risk_percentage = 100
+            if dealer_score >= 18:
+                # dealer randomly chooses if he wants to risk a HIT when close to 21
+                # 25% chance of risking it
+                risk_percentage = random.randint(0, 100)
+
+            if risk_percentage >= 75:
+                deck, dealer = deal_one_hand(current_deck=deck, current_hand=dealer)
+                dealer_score = calc_hand_total(dealer)
+                print(f"Dealer has acquired a card (hidden)")
+            else:
+                print("Dealer did not pick any card [STAND] . . .")
+
             # calculating the number of cards that the dealer has
             dealer_cards = 0
             for card in dealer:
