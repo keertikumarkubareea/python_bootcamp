@@ -14,7 +14,7 @@ def extract_colors(number_colors: int, image: str) -> list:
 
 
 def draw_dotted_line(t: Turtle, colors: list) -> None:
-    for _ in range(10):
+    for _ in range(25):
         t.pencolor(random.choice(colors).rgb)
         t.circle(5)
         t.penup()
@@ -22,17 +22,26 @@ def draw_dotted_line(t: Turtle, colors: list) -> None:
         t.pendown()
 
 
+def move_one_row_up(t: Turtle, row_number: int) -> None:
+    t.penup()
+    t.goto(0, 35 * row_number)
+    t.pendown()
+
 def main():
     # configuring turtle and screen
+    screen = Screen()
+    screen.colormode(255)
+    screen.setworldcoordinates(-1, -1, screen.window_width() - 1, screen.window_height() - 1)
+
     tim = Turtle()
     tim.speed("fastest")
     tim.pensize(10)
 
-    screen = Screen()
-    screen.colormode(255)
+    color_palette = extract_colors(number_colors=20, image="hirst_image.jpg")
 
-    color_palette = extract_colors(number_colors=10, image="hirst_image.jpg")
-    draw_dotted_line(t=tim, colors=color_palette)
+    for row in range(10):
+        move_one_row_up(t=tim, row_number=row)
+        draw_dotted_line(t=tim, colors=color_palette)
 
     screen.exitonclick()
 
