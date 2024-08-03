@@ -36,10 +36,11 @@ def main():
     tim = Turtle()
     tim.speed("fastest")
     tim.pensize(10)
+    tim.hideturtle()
 
     color_palette = extract_colors(number_colors=20, image="hirst_image.jpg")
 
-    for row in range(10):
+    for row in range(20):
         move_one_row_up(t=tim, row_number=row)
         draw_dotted_line(t=tim, colors=color_palette)
 
