@@ -12,7 +12,9 @@ def main():
     question_bank = []
     # Creating the question bank of Question objects
     for item in question_data:
+        # Creating the Question object
         question = Question(question=item[data.TEXT], answer=item[data.ANSWER])
+        # Appending the question object to the question_bank list
         question_bank.append(question)
     quiz_brain = QuizBrain(question_list=question_bank)
     completed = False
