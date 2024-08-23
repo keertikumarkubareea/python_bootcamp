@@ -4,25 +4,10 @@ Day 20 consists of 3 modules:
 2. Moving the snake on the screen
 3. Controlling the snake with the keyboard
 """
-from turtle import Screen, Turtle
+from snake import Snake
+from turtle import Screen
 import time
 
-
-def create_block() -> Turtle:
-    block = Turtle(shape="square")
-    block.color("white")
-    block.penup()
-    return block
-
-
-def follow_head(snake):
-    last_block_index = len(snake) - 1
-    # moving the last blocks to the previous-to-last blocks position
-    for snake_block in range(last_block_index, 0, -1):  # index 0 is excluded - need to move the head on its own
-        new_x = snake[snake_block - 1].xcor()
-        new_y = snake[snake_block - 1].ycor()
-
-        snake[snake_block].goto(new_x, new_y)
 
 def main():
     # Set up the screen
@@ -33,34 +18,20 @@ def main():
     screen.tracer(0)  # turn off tracer, need to call screen.update for any update to happen on the screen
     # this is being done to smoothen the animation of the moving turtle
     # if this is not done, we will see each block in the snake move
-
-    # create 3 turtles(original length of the snake)
-    # shape = square for each turtle
-    # one turtle is 20px wide and 20px tall
-
-    # first turtle created at origin(0, 0)
-    x_position = 0
-    y_position = 0
-    snake = []
-    # create 3 initial blocks
-    for _ in range(3):
-        block = create_block()
-        block.goto(x_position, y_position)
-        x_position -= 20
-        snake.append(block)
-
-    screen.update()
-
+    snake = Snake()  # create the snake object
+    screen.update()  # update screen when snake object of 3 turtles has been created
     # completed creating the screen and the snake body
     # moving the snake automatically
-    snake_head = snake[0]
+    screen.listen()
     game_over = False
     while not game_over:
-        screen.update()
+        screen.update()  # Update once all turtle objects that make up the snake have been moved
         time.sleep(0.1)
-
-        follow_head(snake)
-        snake_head.forward(20)
+        snake.move(pace=20)
+        screen.onkey(key="Right", fun=snake.turn_right)
+        screen.onkey(key="Left", fun=snake.turn_left)
+        screen.onkey(key="Up", fun=snake.go_up)
+        screen.onkey(key="Down", fun=snake.go_down)
 
     screen.exitonclick()
 
