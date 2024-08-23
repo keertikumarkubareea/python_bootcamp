@@ -38,6 +38,22 @@ class Snake:
 
             self.snake[snake_block].goto(new_x, new_y)
 
+    def add_block(self):
+        new_block = Turtle(shape="square")
+        new_block.color("white")
+        new_block.penup()
+        last_block = self.snake[-1]
+        heading_last_block = int(last_block.heading())
+        if heading_last_block == 0:  # going east
+            new_block.goto(last_block.xcor() - 20, last_block.ycor())
+        elif heading_last_block == 90:  # going north
+            new_block.goto(last_block.xcor(), last_block.ycor() - 20)
+        elif heading_last_block == 180:  # going west
+            new_block.goto(last_block.xcor() + 20, last_block.ycor())
+        else:  # going south
+            new_block.goto(last_block.xcor(), last_block.ycor() + 20)
+        self.snake.append(new_block)
+
     def move(self, pace):
         self.follow_head()
         self.snake_head.forward(pace)
