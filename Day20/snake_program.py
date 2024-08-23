@@ -7,6 +7,7 @@ Day 20 consists of 3 modules:
 from snake import Snake
 from turtle import Screen
 from food import Food
+from scoreboard import Scoreboard
 import time
 
 
@@ -20,7 +21,8 @@ def main():
     # this is being done to smoothen the animation of the moving turtle
     # if this is not done, we will see each block in the snake move
     snake = Snake()  # create the snake object
-    food = Food()
+    food = Food()  # create the food object
+    scoreboard = Scoreboard()
     screen.update()  # update screen when snake object of 3 turtles has been created
     # completed creating the screen and the snake body
     # moving the snake automatically
@@ -39,9 +41,7 @@ def main():
         if snake.snake_head.xcor() - 20 <= food.food.xcor() <= snake.snake_head.xcor() + 20 and snake.snake_head.ycor() - 20 <= food.food.ycor() <= snake.snake_head.ycor() + 20 :
             food.eaten_by_snake()
             snake.add_block()
-
-
-
+            scoreboard.update_score()
 
     screen.exitonclick()
 
