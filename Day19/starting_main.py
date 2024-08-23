@@ -18,7 +18,6 @@ def main():
     # when we pass a function as an argument to another function, there is no parentheses
     # onkey function is known as a higher order function - takes another function as an input and works with it
 
-
     screen.exitonclick()
 
 
