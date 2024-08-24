@@ -73,3 +73,7 @@ class Snake:
     def go_down(self):
         if int(self.snake_head.heading()) != 90:
             self.snake_head.setheading(270)
+
+    def delete_snake(self):
+        for block in self.snake:
+            block.hideturtle()

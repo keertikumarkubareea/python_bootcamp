@@ -42,6 +42,18 @@ def main():
             food.eaten_by_snake()
             snake.add_block()
             scoreboard.update_score()
+        # check if snake is at the boundaries
+        if snake.snake_head.xcor() >= 300 or snake.snake_head.xcor() <= -300:
+            game_over = True
+        elif snake.snake_head.ycor() >= 300 or snake.snake_head.ycor() <= -300:
+            game_over = True
+
+        # TODO: Add check for when snake bites its own body
+
+    snake.delete_snake()
+    screen.update()
+    scoreboard.game_over()
+    screen.update()
 
     screen.exitonclick()
 

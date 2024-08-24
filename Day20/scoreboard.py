@@ -7,17 +7,28 @@ class Scoreboard:
         self.score_turtle.hideturtle()
         self.score_turtle.color("white")
         self.score_turtle.penup()
-        self.score_turtle.goto(-20, 280)
+        self.score_turtle.goto(-30, 280)
         self.score = 0
         self.score_turtle.pendown()
         self.score_turtle.write(f"Score = {self.score}", font=("Verdana",
                                                                15, "normal"))
 
-    def update_score(self):
+    def erase_score(self):
         self.score_turtle.color("black")
         self.score_turtle.write(f"Score = {self.score}", font=("Verdana",
                                                                15, "normal"))
-        self.score += 1
         self.score_turtle.color("white")
+
+    def update_score(self):
+        self.erase_score()
+        self.score += 1
         self.score_turtle.write(f"Score = {self.score}", font=("Verdana",
                                                                15, "normal"))
+
+    def game_over(self):
+        self.erase_score()
+        self.score_turtle.penup()
+        self.score_turtle.goto(-30, 0)
+        self.score_turtle.pendown()
+        self.score_turtle.write(f"Game over! Your score is {self.score}", font=("Verdana",
+                                                                                15, "normal"))
