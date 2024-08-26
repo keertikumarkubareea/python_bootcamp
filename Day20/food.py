@@ -12,3 +12,6 @@ class Food:
 
     def eaten_by_snake(self):
         self.food.goto(random.randint(-280, 280), random.randint(-280, 270))
+
+    def game_over(self):
+        self.food.hideturtle()

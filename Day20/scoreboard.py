@@ -28,7 +28,7 @@ class Scoreboard:
     def game_over(self):
         self.erase_score()
         self.score_turtle.penup()
-        self.score_turtle.goto(-30, 0)
+        self.score_turtle.goto(-100, 0)
         self.score_turtle.pendown()
         self.score_turtle.write(f"Game over! Your score is {self.score}", font=("Verdana",
                                                                                 15, "normal"))

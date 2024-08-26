@@ -38,20 +38,18 @@ def main():
         screen.onkey(key="Down", fun=snake.go_down)
 
         # check if the food is being eaten
-        if snake.snake_head.xcor() - 20 <= food.food.xcor() <= snake.snake_head.xcor() + 20 and snake.snake_head.ycor() - 20 <= food.food.ycor() <= snake.snake_head.ycor() + 20 :
+        if (snake.snake_head.xcor() - 15 <= food.food.xcor() <= snake.snake_head.xcor() + 15 and snake.snake_head.ycor()
+                - 15 <= food.food.ycor() <= snake.snake_head.ycor() + 15):
             food.eaten_by_snake()
             snake.add_block()
             scoreboard.update_score()
         # check if snake is at the boundaries
-        if snake.snake_head.xcor() >= 300 or snake.snake_head.xcor() <= -300:
+        # check if snake bites itself
+        if snake.snake_collides_with_walls() or snake.snake_bites_itself():
             game_over = True
-        elif snake.snake_head.ycor() >= 300 or snake.snake_head.ycor() <= -300:
-            game_over = True
-
-        # TODO: Add check for when snake bites its own body
 
     snake.delete_snake()
-    screen.update()
+    food.game_over()
     scoreboard.game_over()
     screen.update()
 
