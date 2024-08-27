@@ -79,14 +79,13 @@ class Snake:
             block.hideturtle()
 
     def snake_bites_itself(self) -> bool:
-        # TODO: Fix this method
         for snake_body in range(1, len(self.snake)):
             x_cor_max = self.snake[snake_body].xcor() + 10
             x_cor_min = self.snake[snake_body].xcor() - 10
             y_cor_max = self.snake[snake_body].ycor() + 10
             y_cor_min = self.snake[snake_body].ycor() - 10
             if x_cor_max >= self.snake_head.xcor() >= x_cor_min:
-                if y_cor_max >= self.snake_head.xcor() >= y_cor_min:
+                if y_cor_max >= self.snake_head.ycor() >= y_cor_min:
                     return True
         return False
 
